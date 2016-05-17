@@ -1,0 +1,29 @@
+<div class="container"><hr/>
+  <h1 class="text-center">New post</h1>
+  <div class="col-md-8 col-md-offset-2"><hr/>
+    <form name="newPostForm" ng-submit="submitForm()" novalidate>
+      <div class="form-group">
+        <label for="name">Title:</label>
+        <input type="text" class="form-control" ng-model="post.title" id="title" placeholder="Please enter title" ng-minlength="2" required>
+        <span ng-show="newPostForm.$submitted || newPostForm.name.$touched && newPostForm.name.$invalid ">
+          <span ng-show="newPostForm.name.$error.required">Name is required</span>
+          <span ng-show="newPostForm.name.$error.minlength">Name should be minimum 2 characters</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="email">Description:</label>
+        <textarea ="text" class="form-control" ng-model="post.description" id="descrition"  required placeholder="enter description"></textarea>
+      </div>
+      
+      
+
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <br />
+          <input type="submit" value="Create Post" class="btn btn-primary" />
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
