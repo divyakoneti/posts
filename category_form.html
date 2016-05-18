@@ -1,0 +1,99 @@
+
+<div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active">Home</li>
+      <li>total categories
+        
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div  ng-controller="categoriesController">
+  <div class="container">
+  <form name="categoryForm" ng-submit="submitForm()">
+   <div id="create">
+    <input type = "button" value = "New Category" class = "btn btn-sm btn-info" ng-click = "newCategory(1)">
+      <div class = "newcategory" ng-if = "newCategoryValue==1">
+           <h2 align="center">Add Category</h2>
+	       <label class=" control-label">
+             Category
+           </label>
+      <div class="form-group">
+            <input type="text" name="name" ng-model="category.name" class="form-control" placeholder="Enter  name" ng-maxlength="8" ng-minlength="3" required>
+      </div>
+      <div class="col-lg-4">
+          <span ng-show="categoryForm.name.$error.required" class="text-danger">name is required</span>
+          <span ng-show="categoryForm.name.$error.minlength" class="text-danger">name is too short</span>
+          <span ng-show="categoryForm.name.$error.maxlength" class="text-danger">name is too long</span>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 text-center">
+            <br />
+            <input type="Submit" value="Add Category" ng-click= "submitForm()" class="btn btn-primary" />
+         </div> 
+      </div>
+  </div>  
+      <div id="update"  align="center">
+        	 <input type="button" value="updateStudent" ng-click="updateForm(id)" class="btn btn-primary">
+      </div>
+           
+ </form> 
+  <div id="index">
+  
+  <h1 class="text-center">Total Categories</h1>
+ 
+   <table class="table table-bordered">
+    <thead>
+
+     <tr>
+      <th> ID</th>
+      <th>NAME</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Show</th>
+
+     </tr>
+    </thead>
+    <tbody>
+     <tr ng-repeat="category in categories" >
+
+       
+     <td> {{category.id}}</td>
+     <td>  {{category.name}}</td>
+     <td><a href="" ng-click="edit(category.id)"  class="btn btn-primary">edit</a></td>
+     <td><a href="" ng-click="destroy(category.id)" class="btn btn-primary">Remove</a></td>
+     <td><a href="" ng-click="category-show(category.id)" class="btn btn-primary" data-toggle="modal" data-target="#myModal">show</a></td>
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Category</h4>
+        </div>
+        <div class="modal-body">
+          <h2> Category</h2>
+          NAME::{{category1.name}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </tr>
+   </tbody>
+ 
+</div>  
+</table>
+</div>
+</div>
+</div>
+  <script src="post.js"></script>
+  <script src="sample.js"></script>
