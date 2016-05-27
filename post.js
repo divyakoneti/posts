@@ -22,11 +22,6 @@
            templateUrl: 'total.html',          //index view 
            controller: 'postsController'
         }).
-        
-        when('/sample',{
-           templateUrl: 'Users/divya/Documents/angularjs/post/category_form.html',      //render to the index page
-           controller:  'categoriesController'
-        }).
 
       otherwise({
         redirect_to: '/showPost'
@@ -45,7 +40,7 @@ app1.controller("postsController",function($scope,$http,$window){
    	$http.get("http://192.168.199.237:3000/categories/37/posts/"+id)        //show action          
    	.then(function(response){
       
-         
+        
    	$scope.post=response.data.post;
    	});
   }
@@ -75,7 +70,7 @@ app1.controller("postsController",function($scope,$http,$window){
       $http.get("http://192.168.199.237:3000/categories/37/posts/"+id+"/edit")
       .then(function(response){
         alert("do u want to edit ")
-        $scope.categoey.posts=response.data.category.posts;
+        $scope.category.posts=response.data.category.posts;
       });
   } 
   $scope.updatePost=function(post){
@@ -83,7 +78,7 @@ app1.controller("postsController",function($scope,$http,$window){
       $http.put("http://192.168.199.237:3000/categories/37/posts/"+post.id)
       .then(function(response){
         alert("updated successfully...")
-        $scope.posts=response.data.posts;
+        $scope.post=response.data.post;
       });
   }
   $scope.destroyPost=function(id){
@@ -95,13 +90,7 @@ app1.controller("postsController",function($scope,$http,$window){
         });
       }
   }
-  $scope.category_data=function(){
-    $http.get("http://192.168.199.237:3000/categories")
-    .then(function(response){
-      $scope.categories=response.data.categories;
-    });
-    $scope.category_data();
-  }
+  
 
 
 	
